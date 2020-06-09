@@ -12,7 +12,7 @@ function TabPage(props, ref) {
         async function fetchData(){
             if(props.name !== 'Search' && props.name !== 'Saved'){
                 setLoading(true)
-                await fetch(`http://newsapi.org/v2/top-headlines?country=us&language=en&pageSize=5&category=${props.name.toLowerCase()}&apiKey=${process.env.REACT_APP_API_KEY}`)
+                await fetch(`https://newsapi.org/v2/top-headlines?country=us&language=en&pageSize=5&category=${props.name.toLowerCase()}&apiKey=${process.env.REACT_APP_API_KEY}`)
                 .then(response => response.json())
                 .then(data => {
                     setDataList([...data.articles])
@@ -45,7 +45,7 @@ function TabPage(props, ref) {
 
     async function searchData(){
         setLoading(true)
-        await fetch(`http://newsapi.org/v2/top-headlines?pageSize=5&q=${searchRef.current.value.toLowerCase}&apiKey=${process.env.REACT_APP_API_KEY}`)
+        await fetch(`https://newsapi.org/v2/top-headlines?pageSize=5&q=${searchRef.current.value.toLowerCase}&apiKey=${process.env.REACT_APP_API_KEY}`)
         .then(response => response.json())
         .then(data => {
             setDataList([...data.articles])
