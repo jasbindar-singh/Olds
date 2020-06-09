@@ -1,0 +1,255 @@
+/* Color */
+:root {
+    --primary-color: rgb(250, 250, 250);
+    --secondary-color: #465062;
+    --font-color: #718797;
+    --bg-secondary: #dbe2e9;
+    --heading-color: #313237;
+    --bg-main: #fff;
+    --shadow: rgba(139, 139, 139, 0.2);
+}
+
+[data-theme="dark"] {
+    --primary-color: #252525;
+    --secondary-color: #dbe2e9;
+    --font-color: #718797;
+    --bg-secondary: #465062;
+    --heading-color: #fff;
+    --bg-main: #313237;
+    --shadow: transparent;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*Navbar*/
+.navbar{
+    width: 100%;
+    height: 55px;
+    flex-shrink: 0;
+    background-color: #465062;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-logo{
+    color: #f5f5f1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-logo-main{
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.nav-logo-foot{
+    font-size: 0.6rem;
+    padding-left: 30px;
+}
+
+.nav-dark{
+    position: absolute;
+    right: 50px;
+}
+
+/* Main */
+.app-screen{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tab Screens */
+.tab-screens{
+    width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    scroll-behavior: smooth;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.tab-screens-page{
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--primary-color);
+    overflow: auto; 
+}
+
+.tab-page-content{
+    width: 950px;
+    padding: 25px 50px;
+    /* background: #f5f5f1; */
+}
+
+.tab-content-header{
+    margin-left: 15px;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+}
+
+.tab-content-load{
+    margin-top: 50px;
+    text-align: center;
+    color: var(--heading-color)
+}
+
+.tab-search{
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    margin: 20px 0;
+    padding: 0 20px;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Tab List */
+.tab-list{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    background: var(--bg-secondary);
+}
+
+.tab-list-item{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tab-list-category{
+    margin-left: 5px;
+    color: var(--secondary-color);
+}
+
+.tab-list-icon{
+    color: var(--secondary-color);
+    font-size: 25px;
+}
+
+/* Card */
+.card{
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-main);
+    margin-bottom: 40px;
+    border-radius: 18px;
+    box-shadow: 0px 3px 50px var(--shadow);
+    display: flex;
+    flex-direction: row;
+}
+
+.card-image{
+    flex: 2;
+    min-height: 190px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 18px;
+}
+
+.card-content{
+    flex: 3;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content-heading{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+    line-height: 130%;
+    font-weight: bold;
+}
+
+.card-content-info{
+    line-height: 150%;
+    margin-bottom: 10px;
+    color: var(--font-color);
+}
+
+.card-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--font-color);
+}
+
+.card-footer{
+    color: var(--secondary-color);
+    line-height: 125%;
+}
+
+.card-btn{
+    width: 70px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.card-save-status{
+    display: none;
+    text-align: center;
+    margin: 5px;
+    font-weight: bold;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 950px){
+    .tab-page-content{
+        width: 100%;
+        padding: 25px 25px;
+    }
+
+    .tab-screens-page{
+        padding-top: 0;
+        padding-bottom: 55px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .card{
+        height: auto;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .tab-list-category{
+        display: none;
+    }
+
+    .nav-dark{
+        right: 20px;
+    }
+
+    .tab-search{
+        font-size: 1rem;
+    }
+}
