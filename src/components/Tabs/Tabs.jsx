@@ -4,12 +4,12 @@ import TabList from '../TabList/TabList'
 import TabListItem from '../TabList/TabListItem'
 import TabPage from '../TabScreens/TabPage'
 import { Icon } from '@iconify/react';
-import bxCodeAlt from '@iconify/icons-bx/bx-code-alt';
 import bxTrendingUp from '@iconify/icons-bx/bx-trending-up';
 import bxFootball from '@iconify/icons-bx/bx-football';
 import bxCameraMovie from '@iconify/icons-bx/bx-camera-movie';
 import bxSearchAlt from '@iconify/icons-bx/bx-search-alt';
 import bxStar from '@iconify/icons-bx/bx-star';
+import bxGlobe from '@iconify/icons-bx/bx-globe';
 
 export const SavedContext = createContext();
 
@@ -30,7 +30,7 @@ function Tabs() {
     }, [])
 
     function deleteSaved(id){
-        let filterList = saveList.filter(data => data.publishedAt !== id)
+        let filterList = saveList.filter(data => data.id !== id)
         localStorage.setItem("dataList", JSON.stringify(filterList))
         setSaveList([...filterList])
     }
@@ -50,7 +50,7 @@ function Tabs() {
         <>
             <TabScreens ref={tabRef}>
                 <SavedContext.Provider value={{saveList, deleteSaved, addSaved}}>
-                    <TabPage ref={tabPageRef} name="Technology"/>
+                    <TabPage ref={tabPageRef} name="World"/>
                     <TabPage name="Business"/>
                     <TabPage name="Sports"/>
                     <TabPage name="Entertainment"/>
@@ -59,7 +59,7 @@ function Tabs() {
                 </SavedContext.Provider>
             </TabScreens>
             <TabList>
-                <TabListItem name="Technology" icon={<Icon icon={bxCodeAlt} className="tab-list-icon"/>} onPress={handleClick.bind(this, 0)}/>
+                <TabListItem name="World" icon={<Icon icon={bxGlobe} className="tab-list-icon"/>} onPress={handleClick.bind(this, 0)}/>
                 <TabListItem name="Business" icon={<Icon icon={bxTrendingUp} className="tab-list-icon"/>} onPress={handleClick.bind(this, 1)}/>
                 <TabListItem name="Sports" icon={<Icon icon={bxFootball} className="tab-list-icon"/>} onPress={handleClick.bind(this, 2)}/>
                 <TabListItem name="Entertainment" icon={<Icon icon={bxCameraMovie} className="tab-list-icon"/>} onPress={handleClick.bind(this, 3)}/>

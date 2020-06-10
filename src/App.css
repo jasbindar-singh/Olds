@@ -216,6 +216,7 @@ body{
 
 .card-save-status{
     display: none;
+    color: var(--secondary-color);
     text-align: center;
     margin: 5px;
     font-weight: bold;

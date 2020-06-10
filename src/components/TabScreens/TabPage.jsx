@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState, useRef } from 'react'
 import Card from '../card/Card'
-import axios from 'axios';
+// import axios from 'axios';
 
 function TabPage(props, ref) {
 
@@ -13,21 +13,15 @@ function TabPage(props, ref) {
         async function fetchData(){
             if(props.name !== 'Search' && props.name !== 'Saved'){
                 setLoading(true)
-                // await fetch(`http://newsapi.org/v2/top-headlines?country=us&language=en&pageSize=5&category=${props.name.toLowerCase()}&apiKey=${process.env.REACT_APP_API_KEY}`)
-                // .then(response => response.json())
-                // .then(data => {
-                //     setDataList([...data.articles])
-                //     setLoading(false)
-                // })
-                // .catch(err => {
-                //     console.log(err)
-                // })
-                axios.get(`https://newsapi.org/v2/top-headlines?country=us&language=en&pageSize=5&category=${props.name.toLowerCase()}&apiKey=${process.env.REACT_APP_API_KEY}`)
-                .then(res => {
-                    setDataList([...res.data.articles])
+                await fetch(`https://api.currentsapi.services/v1/search?category=${props.name.toLowerCase()}&language=en&apiKey=${process.env.REACT_APP_API_KEY}`)
+                .then(response => response.json())
+                .then(data => {
+                    setDataList([...data.news])
                     setLoading(false)
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    console.log(err)
+                })
             }
             if(props.name === 'Saved'){
                 setDataList(props.saveList)
@@ -52,21 +46,15 @@ function TabPage(props, ref) {
 
     async function searchData(){
         setLoading(true)
-        // await fetch(`http://newsapi.org/v2/top-headlines?pageSize=5&q=${searchRef.current.value.toLowerCase}&apiKey=${process.env.REACT_APP_API_KEY}`)
-        // .then(response => response.json())
-        // .then(data => {
-        //     setDataList([...data.articles])
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
-        axios.get(`https://newsapi.org/v2/top-headlines?pageSize=5&q=${searchRef.current.value.toLowerCase()}&apiKey=${process.env.REACT_APP_API_KEY}`)
-        .then(res => {
-            console.log(res)
-            setDataList([...res.data.articles])
-            setLoading(false)
+        await fetch(`https://api.currentsapi.services/v1/search?keywords=${searchRef.current.value.trim().toLowerCase()}&language=en&apiKey=${process.env.REACT_APP_API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            setDataList([...data.news])
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+        })
+        setLoading(false)
     }
 
     function handleChange(){
