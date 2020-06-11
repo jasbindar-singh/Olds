@@ -102,7 +102,7 @@ a{
 }
 
 .tab-content-header{
-    margin-left: 15px;
+    margin-left: 10px;
     font-size: 2rem;
     margin-bottom: 10px;
     color: var(--heading-color);
@@ -138,6 +138,7 @@ a{
     height: 55px;
     display: flex;
     background: var(--bg-secondary);
+    transition: 0.3s;
 }
 
 .tab-list-item{
@@ -146,15 +147,22 @@ a{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 3px;
+    color: var(--secondary-color);
+    background: var(--bg-secondary);
+    transition: 0.3s;
+}
+
+.tab-list-active{
+    color: var(--bg-secondary);
+    background: var(--secondary-color);
 }
 
 .tab-list-category{
     margin-left: 5px;
-    color: var(--secondary-color);
 }
 
 .tab-list-icon{
-    color: var(--secondary-color);
     font-size: 25px;
 }
 
@@ -218,6 +226,7 @@ a{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    color: var(--secondary-color);
 }
 
 .card-save-status{

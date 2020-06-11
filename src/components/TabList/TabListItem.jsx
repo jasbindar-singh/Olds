@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 
-function TabListItem(props) {
+function TabListItem(props, ref) {
+
     return (
-        <li className="tab-list-item" onClick={props.onPress}>
+        <li ref={ref} className="tab-list-item" onClick={props.onPress}>
             {props.icon}
             <p className="tab-list-category">{props.name}</p>
         </li>
     )
 }
 
-export default TabListItem
+export default forwardRef(TabListItem)

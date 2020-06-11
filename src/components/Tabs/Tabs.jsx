@@ -17,10 +17,12 @@ function Tabs() {
 
     const tabRef = useRef(null);
     const tabPageRef = useRef(null);
+    const tabListRef = useRef(null);
 
     const [saveList, setSaveList] = useState([]);
 
     useEffect(() => {
+        tabListRef.current.classList.add('tab-list-active')
         if(!!localStorage.getItem("dataList")){
             let savedData = JSON.parse(localStorage.getItem("dataList"))
             setSaveList([...savedData])
@@ -42,8 +44,12 @@ function Tabs() {
         setSaveList([...addList])
     }
 
-    function handleClick(index){
+    function handleClick(index, e){
         tabRef.current.scrollLeft = tabPageRef.current.offsetWidth * index;
+        let list = e.currentTarget.parentNode.childNodes
+        for(let i = 0; i < list.length; i++)
+            list[i].classList.remove('tab-list-active')
+        e.currentTarget.classList.add('tab-list-active')
     }
 
     return (
@@ -59,7 +65,7 @@ function Tabs() {
                 </SavedContext.Provider>
             </TabScreens>
             <TabList>
-                <TabListItem name="World" icon={<Icon icon={bxGlobe} className="tab-list-icon"/>} onPress={handleClick.bind(this, 0)}/>
+                <TabListItem ref={tabListRef} name="World" icon={<Icon icon={bxGlobe} className="tab-list-icon"/>} onPress={handleClick.bind(this, 0)}/>
                 <TabListItem name="Business" icon={<Icon icon={bxTrendingUp} className="tab-list-icon"/>} onPress={handleClick.bind(this, 1)}/>
                 <TabListItem name="Sports" icon={<Icon icon={bxFootball} className="tab-list-icon"/>} onPress={handleClick.bind(this, 2)}/>
                 <TabListItem name="Entertainment" icon={<Icon icon={bxCameraMovie} className="tab-list-icon"/>} onPress={handleClick.bind(this, 3)}/>
