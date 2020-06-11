@@ -1,20 +1,31 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react';
 import bxMoon from '@iconify/icons-bx/bx-moon';
 import bxSun from '@iconify/icons-bx/bx-sun';
 
 function Navbar() {
 
-    const [toggle, setToggle] = useState(true)
+    const [isDark, setIsDark] = useState(localStorage.getItem('darkModePerference') === 'dark' ? true : false)
+
+    useEffect(() => {
+        if(!!localStorage.getItem('darkModePerference')){
+            if(localStorage.getItem('darkModePerference') === 'dark')
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+    }, [])
 
     function toggleTheme(){
-        if (toggle) {
-            document.documentElement.setAttribute('data-theme', 'dark');
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('darkModePerference', 'light');
         }
         else {
-            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('darkModePerference', 'dark');
         }
-        setToggle(prev => !prev) 
+        setIsDark(prev => !prev) 
     }
 
     return (
@@ -25,9 +36,9 @@ function Navbar() {
             </div>
             <div className="nav-dark" onClick={toggleTheme}>
                 {
-                    toggle ? 
-                    <Icon icon={bxMoon} style={{color: '#f1f1f5', fontSize: '20px'}} /> : 
-                    <Icon icon={bxSun} style={{color: '#f1f1f5', fontSize: '20px'}} />
+                    isDark ? 
+                    <Icon icon={bxSun} style={{color: '#f1f1f5', fontSize: '20px'}} /> :
+                    <Icon icon={bxMoon} style={{color: '#f1f1f5', fontSize: '20px'}} />
                 }
             </div>
         </div>

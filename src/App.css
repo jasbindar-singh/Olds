@@ -23,6 +23,10 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
+a{
+    color: #004b91;
+}
+
 /*Navbar*/
 .navbar{
     width: 100%;
@@ -88,6 +92,7 @@ body{
     align-items: center;
     background: var(--primary-color);
     overflow: auto; 
+    transition: 0.3s;
 }
 
 .tab-page-content{
@@ -163,6 +168,7 @@ body{
     box-shadow: 0px 3px 50px var(--shadow);
     display: flex;
     flex-direction: row;
+    transition: 0.3s;
 }
 
 .card-image{
