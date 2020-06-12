@@ -2,13 +2,13 @@
 
 Check it out  
 [OLDS](https://olds.netlify.app/)
-    -Consuming 3rd party API
-    -Infinite Scrolling using Intersection Observer API
-    -Dark Mode preference save
-    -Pure CSS, no CSS framework or library is used
-    -Debouncing for search
-    -Used Web Share API to share
-    -Saving news offline using local storage 
+- Consuming 3rd party API
+- Infinite Scrolling using Intersection Observer API
+- Dark Mode preference save
+- Pure CSS, no CSS framework or library is used
+- Debouncing for search
+- Used Web Share API to share
+- Saving news offline using local storage 
 
 API Used: [CurrentAPI](https://currentsapi.services/en)
 Get your API Key: [Click Here](https://currentsapi.services/en/register)
