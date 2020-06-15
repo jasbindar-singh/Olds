@@ -25,6 +25,11 @@ function TabPage(props, ref) {
         return () => {currentObserver.disconnect()}
     }, [props.name])
 
+    useEffect(() => {
+        if(props.name === 'Saved')
+            setDataList(props.saveList)
+    }, [props])
+
     const fetchData = async () => {
         setLoading(true)
         await fetch(`https://api.currentsapi.services/v1/search?category=${props.name.toLowerCase()}&page_number=${pageNumber.current}&language=en&apiKey=${process.env.REACT_APP_API_KEY}`)
